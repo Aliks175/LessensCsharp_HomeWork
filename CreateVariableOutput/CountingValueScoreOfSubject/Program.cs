@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace CountingValueScoreOfSubject
 {
@@ -16,10 +17,10 @@ namespace CountingValueScoreOfSubject
             summScore = valueScoresInProgramming + valueScoresInMath + valueScoresInPhysics;
             averageOfValue = summScore / valueSubject;
 
-            Console.WriteLine("Общий Балл : " + summScore.ToString("#.")) ;
+            WriteLine("Общий Балл : " + summScore.ToString("#"));
             //Console.WriteLine("Средний Балл : " + averageOfValue.ToString("#.#"));
-            Console.WriteLine("Средний Балл : " + Math.Round(averageOfValue, 1));
-            Console.ReadLine();
+            WriteLine("Средний Балл : " + Math.Round(averageOfValue, 1));
+            ReadLine();
         }
     }
 }
