@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("LessensCModel1_HelloWorld")]
+[assembly: AssemblyTitle("CreateVariableOutput")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LessensCModel1_HelloWorld")]
+[assembly: AssemblyProduct("CreateVariableOutput")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("5c173d9e-7dfb-4e63-9f93-8691263b4246")]
+[assembly: Guid("81c383d5-5cca-46d3-8430-0c1b2f41c849")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
