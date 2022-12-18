@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_HelloWorld", "Lessens1.4\_HelloWorld.csproj", "{84935A6F-73B6-4117-A3F8-D972081837C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_WriteOrWriteLine", "Lessens1.4.2\_WriteOrWriteLine.csproj", "{0E877F69-CD46-4095-BCFC-9D7EBC2177A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84935A6F-73B6-4117-A3F8-D972081837C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84935A6F-73B6-4117-A3F8-D972081837C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84935A6F-73B6-4117-A3F8-D972081837C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84935A6F-73B6-4117-A3F8-D972081837C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E877F69-CD46-4095-BCFC-9D7EBC2177A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E877F69-CD46-4095-BCFC-9D7EBC2177A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E877F69-CD46-4095-BCFC-9D7EBC2177A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E877F69-CD46-4095-BCFC-9D7EBC2177A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75D18EF4-90F7-4CD6-8BC4-69F37159B765}
+	EndGlobalSection
+EndGlobal
