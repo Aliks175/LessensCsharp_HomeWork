@@ -7,35 +7,30 @@ namespace FindMinValue
         static void Main(string[] args)
         {
             bool isplay = true;
-            
-
             while (isplay)
             {
                 bool iserror = false;
                 int changeValue = 0;
                 int minValue = 0;
-                WriteLine("Hello user!\nEnter the length array ");
+                WriteLine("Hello user!\nEnter the length numbers to be checked ");
 
                 if (int.TryParse(ReadLine(), out int value))
                 {
-                    int[] array = new int[value];
-                    for (int i = 0; i < array.Length; i++)
+                    for (int i = 0; i < value; i++)
                     {
-                        WriteLine($"Enter your {i+1} number");
+                        WriteLine($"Enter your {i + 1} number");
                         if (int.TryParse(ReadLine(), out int enterValue))
                         {
-                            array[i] = enterValue;
-
                             if (i == 0)
                             {
-                                changeValue = array[0];
+                                changeValue = enterValue;
                                 minValue = changeValue;
                             }
                             else
                             {
-                                if (changeValue > array[i])
+                                if (changeValue > enterValue)
                                 {
-                                    minValue = array[i];
+                                    minValue = enterValue;
                                 }
                             }
                         }
@@ -50,13 +45,13 @@ namespace FindMinValue
                     if (iserror)
                     {
                         WriteLine($"Error Counting\nPress Enter to Continue");
-                        
+
                     }
                     else
                     {
                         WriteLine($"Min number array {minValue}");
                     }
-                    
+
                     ReadLine();
                 }
                 else

@@ -8,7 +8,6 @@ namespace CountingTheSumOfCardsInTheGame
         {
 
             bool isplay = true;
-            int stepCounting = 1;
 
             while (isplay)
             {
@@ -17,45 +16,59 @@ namespace CountingTheSumOfCardsInTheGame
 
                 WriteLine("Hello user!\nEnter the number of cards on yours hands ");
 
-                if (int.TryParse(ReadLine(), out int value))
+                if (int.TryParse(ReadLine(), out int enterCard))
                 {
-                    WriteLine("\t<<<Help>>>\nJack = J\nQueen = Q\nKing = K\nAce = A\nAnd your number cards\n\t<<<Help>>>\n");
-
-                    for (int i = 0; i < value; i++)
+                    if (enterCard > 0)
                     {
-                        WriteLine($"Enter yours cards #{i + stepCounting}");
-                        string enterValue = ReadLine().ToUpper();
-                        if ((int.TryParse(enterValue, out int number)))
+                        WriteLine("\t<<<Help>>>\nJack = J\nQueen = Q\nKing = K\nAce = A\nAnd your number cards\n\t<<<Help>>>\n");
+                        for (int i = 0; i < enterCard; i++)
                         {
-                            sumScore += number;
-                        }
-                        else
-                        {
-                            switch (enterValue)
+                            WriteLine($"Enter yours cards #{i + 1}");
+                            string enterValue = ReadLine().ToUpper();
+                            if ((int.TryParse(enterValue, out int enterNumberCard)))
                             {
-                                case "J":
-                                case "Q":
-                                case "K":
-                                case "A":
-                                    sumScore += 10;
+                                if (enterNumberCard > 0 && enterNumberCard < 11)
+                                {
+                                    sumScore += enterNumberCard;
+                                }
+                                else
+                                {
+                                    WriteLine($"Error no invalid number card");
+                                    iserror = true;
                                     break;
-                                default:
+                                }
+
+                            }
+                            else
+                            {
+                                if (enterValue == "J" || enterValue == "Q" || enterValue == "K" || enterValue == "A")
+                                {
+                                    sumScore += 10;
+                                }
+                                else
+                                {
                                     WriteLine($"Error no invalid number card");
                                     ReadLine();
                                     iserror = true;
                                     break;
+                                }
                             }
                         }
-                    }
-                    if (iserror)
-                    {
-                        WriteLine($"Error Counting\nPress Enter to Continue");
+                        if (iserror)
+                        {
+                            WriteLine($"Error Counting\nPress Enter to Continue");
+                        }
+                        else
+                        {
+                            WriteLine($"\n\t<Sum cards on your hands {sumScore}>");
+                        }
+                        ReadLine();
                     }
                     else
                     {
-                        WriteLine($"\n\t<Sum cards on your hands {sumScore}>");
+                        WriteLine($"Error no invalid number card");
+                        ReadLine();
                     }
-                    ReadLine();
                 }
                 else
                 {

@@ -7,19 +7,19 @@ namespace CheckPrimeNumber
         {
 
             bool isplay = true;
-           
+
             while (isplay)
             {
-                bool isprimeNumber=true;
+                bool isprimeNumber = true;
 
                 WriteLine("Hello user!\nEnter the number ");
 
                 if (int.TryParse(ReadLine(), out int value))
                 {
                     int i = 2;
-                    while (i< value-1)
+                    while (i < value - 1)
                     {
-                        if (value%i==0)
+                        if (value % i == 0)
                         {
                             isprimeNumber = false;
                             break;
