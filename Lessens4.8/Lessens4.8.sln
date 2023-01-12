@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomMatrix", "RandomMatrix\RandomMatrix.csproj", "{3B57CF44-C0E1-4968-83EC-7BD6FD005CBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummMatrix", "SummMatrix\SummMatrix.csproj", "{54CD184D-DACA-4026-A1F8-9E19C28C86AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B57CF44-C0E1-4968-83EC-7BD6FD005CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B57CF44-C0E1-4968-83EC-7BD6FD005CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B57CF44-C0E1-4968-83EC-7BD6FD005CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B57CF44-C0E1-4968-83EC-7BD6FD005CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CD184D-DACA-4026-A1F8-9E19C28C86AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CD184D-DACA-4026-A1F8-9E19C28C86AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CD184D-DACA-4026-A1F8-9E19C28C86AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CD184D-DACA-4026-A1F8-9E19C28C86AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9856B2A2-28D0-4EB1-B8F5-D67EC208CD3D}
+	EndGlobalSection
+EndGlobal
