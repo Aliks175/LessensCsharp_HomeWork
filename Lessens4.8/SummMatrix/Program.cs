@@ -5,98 +5,72 @@ namespace SummMatrix
 {
     internal class Program
     {
+        static void FillMatrix(int[,] Matrix, Random randomValue)
+        {
+            for (int line = 0; line < Matrix.GetLength(0); line++)
+            {
+                Write($"line #{line + 1,3}.");
+                for (int column = 0; column < Matrix.GetLength(1); column++)
+                {
+                    Matrix[line, column] = randomValue.Next(1, 10);
+                    Write($"{Matrix[line, column],5}");
+                }
+                WriteLine();
+            }
+        }
+
+        static void SummTwoMatrix(int[,] firstMatrix, int[,] secondMatrix, int[,] summMatrix)
+        {
+            for (int line = 0; line < summMatrix.GetLength(0); line++)
+            {
+                Write($"line #{line + 1,3}.");
+                for (int column = 0; column < summMatrix.GetLength(1); column++)
+                {
+                    summMatrix[line, column] = firstMatrix[line, column] + secondMatrix[line, column];
+                    Write($"{summMatrix[line, column],5}");
+                }
+                WriteLine();
+            }
+        }
+
         static void Main(string[] args)
         {
             bool isplay = true;
-
-
             Random random = new Random();
-
             while (isplay)
             {
-                WriteLine("Enter the value line in Matrix, no more 100 line");
-
-                if ((int.TryParse(ReadLine(), out int valueLine) && valueLine < 101))
+                WriteLine("Enter the value line in Matrix");
+                if (int.TryParse(ReadLine(), out int valueLine))
                 {
-                    WriteLine("Enter the value columns in Matrix, no more 6 columns");
-                    if ((int.TryParse(ReadLine(), out int valueColumns) && valueColumns < 7))
+                    WriteLine("Enter the value columns in Matrix");
+                    if (int.TryParse(ReadLine(), out int valueColumns))
                     {
                         int[,] firstMatrix = new int[valueLine, valueColumns];
                         int[,] secondMatrix = new int[valueLine, valueColumns];
                         int[,] summMatrix = new int[valueLine, valueColumns];
-
-                        for (int reprintMatrix = 1; reprintMatrix < 4; reprintMatrix++)
-                        {
-                            if (reprintMatrix == 3)
-                            {
-                                WriteLine($"\nThis is matrix summ first matrix and second matrix\n");
-                            }
-                            else
-                            {
-                                WriteLine($"\nThis is Matrix # {reprintMatrix}\n");
-                            }
-                            for (int line = 0; line < firstMatrix.GetLength(0); line++)
-                            {
-                                if (line == 0)
-                                {
-                                    for (int numberColumn = 0; numberColumn < firstMatrix.GetLength(1); numberColumn++)
-                                    {
-                                        string infocolumn = "column #";
-                                        Write($"{infocolumn,16} {numberColumn + 1}");
-                                    }
-                                    WriteLine();
-                                }
-
-                                Write($"line #{line + 1,3}");
-
-                                for (int column = 0; column < firstMatrix.GetLength(1); column++)
-                                {
-                                    if (reprintMatrix == 3)
-                                    {
-                                        firstMatrix[line, column] = secondMatrix[line, column] + firstMatrix[line, column];
-                                    }
-                                    else
-                                    {
-                                        firstMatrix[line, column] = random.Next(1, 10);
-                                        if (reprintMatrix == 1)
-                                        {
-                                            secondMatrix[line, column] = firstMatrix[line, column];
-                                        }
-                                    }
-
-                                    if (column == 0)
-                                    {
-                                        Write($"{firstMatrix[line, column],5}");
-                                    }
-                                    else
-                                    {
-                                        Write($"{firstMatrix[line, column],18}");
-                                    }
-                                }
-                                WriteLine();
-                            }
-                        }
+                        WriteLine($"\n#####This is first matrix#####\n");
+                        FillMatrix(firstMatrix, random);
+                        WriteLine($"\n#####This is second matrix#####\n");
+                        FillMatrix(secondMatrix, random);
+                        WriteLine($"\nThis is matrix summ first matrix and second matrix\n");
+                        SummTwoMatrix(firstMatrix, secondMatrix, summMatrix);
                     }
                     else
                     {
-                        WriteLine($"Error no invalid number");
+                        WriteLine($"Error no invalid value columns in Matrix");
                         ReadLine();
                         break;
                     }
                 }
                 else
                 {
-                    WriteLine($"Error no invalid number");
+                    WriteLine($"Error no invalid value line in Matrix");
                     ReadLine();
                     break;
                 }
                 ReadLine();
-
-
                 WriteLine("Exit to Program ?\nY or N");
-
                 string userSelection = ReadLine().ToUpper();
-
                 switch (userSelection)
                 {
                     case "Y":
@@ -109,7 +83,6 @@ namespace SummMatrix
                         ReadLine();
                         break;
                 }
-
                 Clear();
             }
         }
