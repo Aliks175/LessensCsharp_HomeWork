@@ -76,8 +76,8 @@ namespace CreatePersonalBusiness
                     else
                     {
                         str[str.Length - 1] = SaveEmployee(directory, numberString);
+                        File.WriteAllLines(pathFile, str);
                     }
-                    File.WriteAllLines(pathFile, str);
                 }
                 WriteLine("Continue: Y or N");
                 string userSelection = ReadLine().ToUpper();
