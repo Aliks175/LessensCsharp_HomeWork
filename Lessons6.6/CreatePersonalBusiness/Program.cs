@@ -18,67 +18,69 @@ namespace CreatePersonalBusiness
     {
         static void Main(string[] args)
         {
-            int enterNumber;
             string pathFile = @"PersonalAffairsForEmployees.txt";
-            string[] stringsText;
+            string[] stringsText = null;
             bool isPlayBack = true;
             while (isPlayBack)
             {
                 WriteLine("\tChoose a further action\n" + "1.Data output\n" + "2.Data entry\n");
-                if (int.TryParse(ReadLine(), out enterNumber) && enterNumber > 0 && enterNumber < 3)
+                if (int.TryParse(ReadLine(), out int enterNumber) && enterNumber > 0 && enterNumber < 3)
                 {
-                    if (File.Exists(pathFile))
-                    {
-                        stringsText = File.ReadAllLines(pathFile);
-                        if (enterNumber == 1)
-                        {
-                            Clear();
-                            for (int i = 0; i < stringsText.GetLength(0); i++)
-                            {
-                                WriteLine(stringsText[i]);
-                            }
-                        }
-                        else
-                        {
-                            int numberString = 1;
-                            string[] str = new string[stringsText.Length + 1];
-                            for (int i = 0; i < stringsText.Length; i++)
-                            {
-                                if (stringsText[i] != " ")
-                                {
-                                    numberString++;
-                                }
-                                str[i] = stringsText[i];
-                            }
-                            Directory directory = AddEmployee(pathFile);
-                            if (directory.fullName == null)
-                            {
-                                WriteLine("Error, failed to add an employee check the correctness of the data and re-enter");
-                            }
-                            else
-                            {
-                                str[str.Length - 1] = SaveEmployee(directory, numberString);
-                            }
-                            File.WriteAllLines(pathFile, str);
-
-                        }
-                        stringsText = File.ReadAllLines(pathFile);
-                    }
-                    else
-                    {
-                        using (File.Create(pathFile))
-                            WriteLine("File created");
-                        continue;
-                    }
                 }
                 else
                 {
                     WriteLine("Error, invalid value entered");
+                    ReadLine();
+                    continue;
+                }
+                if (File.Exists(pathFile))
+                {
+                    stringsText = File.ReadAllLines(pathFile);
+                }
+                else
+                {
+                    using (File.Create(pathFile))
+                        WriteLine("File created");
+                    ReadLine();
+                }
+                if (enterNumber == 1)
+                {
+                    Clear();
+                    for (int i = 0; i < stringsText.GetLength(0); i++)
+                    {
+                        string[] array = stringsText[i].Split('#');
+                        foreach (var item in array)
+                        {
+                            Write(item + ' ');
+                        }
+                        WriteLine();
+                    }
+                }
+                else
+                {
+                    int numberString = 1;
+                    string[] str = new string[stringsText.Length + 1];
+                    for (int i = 0; i < stringsText.Length; i++)
+                    {
+                        if (stringsText[i] != "")
+                        {
+                            numberString++;
+                        }
+                        str[i] = stringsText[i];
+                    }
+                    Directory directory = AddEmployee(pathFile);
+                    if (directory.fullName == null)
+                    {
+                        WriteLine("Error, failed to add an employee check the correctness of the data and re-enter");
+                    }
+                    else
+                    {
+                        str[str.Length - 1] = SaveEmployee(directory, numberString);
+                    }
+                    File.WriteAllLines(pathFile, str);
                 }
                 WriteLine("Continue: Y or N");
-
                 string userSelection = ReadLine().ToUpper();
-
                 switch (userSelection)
                 {
                     case "Y":
@@ -106,30 +108,30 @@ namespace CreatePersonalBusiness
             WriteLine("Enter age Employee(Sample: 28)");
             if (int.TryParse(ReadLine(), out directory.age))
             {
-                WriteLine("Enter stature Employee(Sample: 178)");
-                if (float.TryParse(ReadLine(), out directory.stature))
-                {
-                    WriteLine("Enter dateOfBirth Employee(Sample: 05.05.1992)");
-                    if (DateTime.TryParse(ReadLine(), out directory.dateOfBirth))
-                    {
-                        WriteLine("Enter placeOfBirth Employee(Sample: to Moscow)");
-                        directory.placeOfBirth = ReadLine();
-                    }
-                    else
-                    {
-                        WriteLine("Error enter dateOfBirth");
-                        iserror = true;
-                    }
-                }
-                else
-                {
-                    WriteLine("Error enter stature");
-                    iserror = true;
-                }
             }
             else
             {
                 WriteLine("Error enter age");
+                iserror = true;
+            }
+            WriteLine("Enter stature Employee(Sample: 178)");
+            if (float.TryParse(ReadLine(), out directory.stature))
+            {
+            }
+            else
+            {
+                WriteLine("Error enter stature");
+                iserror = true;
+            }
+            WriteLine("Enter dateOfBirth Employee(Sample: 05.05.1992)");
+            if (DateTime.TryParse(ReadLine(), out directory.dateOfBirth))
+            {
+                WriteLine("Enter placeOfBirth Employee(Sample: to Moscow)");
+                directory.placeOfBirth = ReadLine();
+            }
+            else
+            {
+                WriteLine("Error enter dateOfBirth");
                 iserror = true;
             }
             if (iserror)
@@ -146,7 +148,7 @@ namespace CreatePersonalBusiness
         static string SaveEmployee(Directory directory, int id)
         {
             string s;
-            s = $"{id} {directory.time} {directory.fullName} {directory.age} {directory.stature} {directory.dateOfBirth.ToShortDateString()} {directory.placeOfBirth}\n ";
+            s = string.Join("#", id, directory.time, directory.fullName, directory.age, directory.stature, directory.dateOfBirth.ToShortDateString(), directory.placeOfBirth) + "\n";
             return s;
         }
     }
