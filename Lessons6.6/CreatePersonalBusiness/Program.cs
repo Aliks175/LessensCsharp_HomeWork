@@ -19,7 +19,6 @@ namespace CreatePersonalBusiness
         static void Main(string[] args)
         {
             string pathFile = @"PersonalAffairsForEmployees.txt";
-            string[] stringsText = null;
             bool isPlayBack = true;
             while (isPlayBack)
             {
@@ -33,52 +32,48 @@ namespace CreatePersonalBusiness
                     ReadLine();
                     continue;
                 }
-                if (File.Exists(pathFile))
-                {
-                    stringsText = File.ReadAllLines(pathFile);
-                }
-                else
-                {
-                    using (File.Create(pathFile))
-                        WriteLine("File created");
-                    ReadLine();
-                }
+                FileStream t = new FileStream(pathFile, FileMode.OpenOrCreate);
+                t.Close();
                 if (enterNumber == 1)
                 {
-                    Clear();
-                    for (int i = 0; i < stringsText.GetLength(0); i++)
+                    using (StreamReader f = new StreamReader(pathFile))
                     {
-                        string[] array = stringsText[i].Split('#');
-                        foreach (var item in array)
+                        Clear();
+                        while (!f.EndOfStream)
                         {
-                            Write(item + ' ');
+                            foreach (var item in f.ReadLine().Split('#'))
+                            {
+                                Write(item + ' ');
+                            }
+                            WriteLine();
                         }
-                        WriteLine();
                     }
                 }
                 else
                 {
-                    int numberString = 1;
-                    string[] str = new string[stringsText.Length + 1];
-                    for (int i = 0; i < stringsText.Length; i++)
+                    string[] str = File.ReadAllLines(pathFile);
+                    if (str.Length == 0)
                     {
-                        if (stringsText[i] != "")
+                        str = new string[1];
+                    }
+                    using (StreamWriter f = new StreamWriter(pathFile))
+                    {
+                        Directory directory = AddEmployee(pathFile);
+                        if (directory.fullName == null)
                         {
-                            numberString++;
+                            WriteLine("Error, failed to add an employee check the correctness of the data and re-enter");
                         }
-                        str[i] = stringsText[i];
-                    }
-                    Directory directory = AddEmployee(pathFile);
-                    if (directory.fullName == null)
-                    {
-                        WriteLine("Error, failed to add an employee check the correctness of the data and re-enter");
-                    }
-                    else
-                    {
-                        str[str.Length - 1] = SaveEmployee(directory, numberString);
-                        File.WriteAllLines(pathFile, str);
+                        else
+                        {
+                            str[str.Length - 1] = SaveEmployee(directory, str.Length);
+                            foreach (var item in str)
+                            {
+                                f.WriteLine(item);
+                            }
+                        }
                     }
                 }
+
                 WriteLine("Continue: Y or N");
                 string userSelection = ReadLine().ToUpper();
                 switch (userSelection)
@@ -148,7 +143,7 @@ namespace CreatePersonalBusiness
         static string SaveEmployee(Directory directory, int id)
         {
             string s;
-            s = string.Join("#", id, directory.time, directory.fullName, directory.age, directory.stature, directory.dateOfBirth.ToShortDateString(), directory.placeOfBirth) + "\n";
+            s = string.Join("#", id, directory.time, directory.fullName, directory.age, directory.stature, directory.dateOfBirth.ToShortDateString(), directory.placeOfBirth + '\n');
             return s;
         }
     }
