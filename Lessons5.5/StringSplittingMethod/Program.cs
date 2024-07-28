@@ -3,21 +3,25 @@ using static System.Console;
 
 namespace StringSplittingMethod
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            Split split = new Split();
             string enterText;
             string[] word;
             WriteLine("Enter your text");
             enterText = ReadLine();
             WriteLine("\n\t###-Start to work-###\n");
-            word = SplitText(enterText);
-            PrintString(word);
+            word = split.SplitText(enterText);
+            split.PrintString(word);
             ReadLine();
         }
+    }
 
-        static string[] SplitText(string text)
+    public class Split
+    {
+        public string[] SplitText(string text)
         {
             string[] word;
             char[] separators = new char[] { ' ', '.', ',', '?', '!' };
@@ -25,7 +29,7 @@ namespace StringSplittingMethod
             return word;
         }
 
-        static void PrintString(string[] word)
+        public void PrintString(string[] word)
         {
             foreach (var item in word)
             {

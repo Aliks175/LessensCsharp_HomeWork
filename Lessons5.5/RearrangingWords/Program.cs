@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace RearrangingWords
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -17,7 +17,7 @@ namespace RearrangingWords
             ReadLine();
         }
 
-        static string ReversWords(string inputPhrase)
+        static public string ReversWords(string inputPhrase)
         {
             return Reverse(inputPhrase);
         }
